@@ -20,7 +20,7 @@ public class Bulbasaur {
 
     // getLevel method
     public int getLevel() {
-        return level; // Placeholder return value
+        return level; 
     }
 
     // getName method
@@ -32,7 +32,7 @@ public class Bulbasaur {
         } else if (id == 3) {
             return "Venusaur";
         }
-        return ""; // Placeholder return value
+        return null; 
     }
 
     // getID method
@@ -62,5 +62,16 @@ public class Bulbasaur {
         copy.id = this.id;
         copy.level = this.level;
         return copy;
+    }
+
+    public static void main(String[] args) {
+        Bulbasaur bulbasaur = new Bulbasaur();
+        bulbasaur.setLevel(20);
+        System.out.println(bulbasaur.getName());
+        System.out.println(bulbasaur.getID());
+        System.out.println(bulbasaur.getLevel());
+        System.out.println(bulbasaur.toString());
+        System.out.println(bulbasaur.equals(new Bulbasaur()));
+        System.out.println(bulbasaur.copy());
     }
 }

@@ -4,17 +4,22 @@ public class Bulbasaur {
 
     // Constructor
     public Bulbasaur() {
-        int id = 1;
-        int level = 1;
+        this.id = 1;
+        this.level = 1;
     }
 
     // setLevel method
     public void setLevel(int lv) {
-        level = lv;
-        if (level >= 16 && level < 32) {
-            id = 2;
-        } else if (level >= 32) {
-            id = 3;
+        if (lv < 1) {
+            throw new IllegalArgumentException("Level must be at least 1");
+        }
+        this.level = lv;
+        if (this.level >= 16 && this.level < 32) {
+            this.id = 2;
+        } else if (this.level >= 32) {
+            this.id = 3;
+        } else {
+            this.id = 1;
         }
     }
 
@@ -25,14 +30,12 @@ public class Bulbasaur {
 
     // getName method
     public String getName() {
-        if (id == 1) {
-            return "Bulbasaur";
-        } else if (id == 2) {
-            return "Ivysaur";
-        } else if (id == 3) {
-            return "Venusaur";
+        switch (id) {
+            case 1: return "Bulbasaur";
+            case 2: return "Ivysaur";
+            case 3: return "Venusaur";
+            default: return "Unknown";
         }
-        return null; 
     }
 
     // getID method
@@ -43,17 +46,16 @@ public class Bulbasaur {
     // toString method
     @Override
     public String toString() {
-        return "Bulbasaur: Level " + level;
+        return getName() + ": Level " + level + ", ID: " + id;
     }
 
     // equals method
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Bulbasaur) {
-            Bulbasaur other = (Bulbasaur) obj;
-            return this.id == other.id && this.level == other.level;
-        }
-        return false;
+        if (this == obj) return true;
+        if (!(obj instanceof Bulbasaur)) return false;
+        Bulbasaur other = (Bulbasaur) obj;
+        return this.id == other.id && this.level == other.level;
     }
 
     // copy method
@@ -62,6 +64,12 @@ public class Bulbasaur {
         copy.id = this.id;
         copy.level = this.level;
         return copy;
+    }
+
+    // hashCode method
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, level);
     }
 
     public static void main(String[] args) {

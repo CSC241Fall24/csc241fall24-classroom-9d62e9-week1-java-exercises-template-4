@@ -7,6 +7,10 @@ public class Bulbasaur {
         this.id = 1;
         this.level = 1;
     }
+    public Bulbasaur(int level) {
+        this.level = level;
+        this.id = 1;
+    }
 
     // setLevel method
     public void setLevel(int lv) {
@@ -46,7 +50,7 @@ public class Bulbasaur {
     // toString method
     @Override
     public String toString() {
-        return getName() + ": Level " + level + ", ID: " + id;
+        return getName() + ": Level " + level;
     }
 
     // equals method
@@ -55,21 +59,20 @@ public class Bulbasaur {
         if (this == obj) return true;
         if (!(obj instanceof Bulbasaur)) return false;
         Bulbasaur other = (Bulbasaur) obj;
-        return this.id == other.id && this.level == other.level;
+        return this.level == other.level;
     }
 
     // copy method
     public Bulbasaur copy() {
         Bulbasaur copy = new Bulbasaur();
-        copy.id = this.id;
-        copy.level = this.level;
+        copy.setLevel(this.level);
         return copy;
     }
 
     // hashCode method
     @Override
     public int hashCode() {
-        return Objects.hash(id, level);
+        return Objects.hash(level);
     }
 
     public static void main(String[] args) {

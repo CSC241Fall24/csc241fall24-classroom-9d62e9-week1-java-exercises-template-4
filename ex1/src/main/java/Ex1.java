@@ -4,14 +4,14 @@ public class Ex1 {
         for (int i = 0; i < count; i++) {
             sum += start + i * step;
         }
-        return sum; 
+        return sum;
     }
+
     public static void main(String[] args) {
         long start = 81297;
         long step = 198;
         int count = 100;
-        long sum = calculateGaussSum(start, step, count);
-        System.out.println("The sum of the arithmetic progression is: " + sum);
+        long result = calculateGaussSum(start, step, count);
+        System.out.println("The sum is: " + result);
     }
 }
-    
